@@ -57,6 +57,7 @@ public class SeriesFragment extends Fragment {
         rcPopular.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
         rcPopular.setAdapter(adapter);
+        rcPopular.setNestedScrollingEnabled(false);
     }
 
     private void setTopic() {
@@ -70,6 +71,7 @@ public class SeriesFragment extends Fragment {
         rcTopics.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         TopicRcAdapter adapter= new TopicRcAdapter(getContext(),R.layout.topic_view_holder,tpList);
         rcTopics.setAdapter(adapter);
+        rcTopics.setNestedScrollingEnabled(false);
     }
 
     private void setHealthy() {
@@ -81,6 +83,7 @@ public class SeriesFragment extends Fragment {
         rcHealthyMind.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
         rcHealthyMind.setAdapter(adapter);
+        rcHealthyMind.setNestedScrollingEnabled(false);
     }
 
     private void setNew() {
@@ -92,6 +95,7 @@ public class SeriesFragment extends Fragment {
         rcNewHabit.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
         rcNewHabit.setAdapter(adapter);
+        rcNewHabit.setNestedScrollingEnabled(false);
     }
 
     private void setPlayList() {
@@ -103,5 +107,6 @@ public class SeriesFragment extends Fragment {
         rcPlayList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
         rcPlayList.setAdapter(adapter);
+        rcPlayList.setNestedScrollingEnabled(false);
     }
 }
