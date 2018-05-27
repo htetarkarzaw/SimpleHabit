@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Models;
+package com.arkarzaw.simplehabit.Data.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

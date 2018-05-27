@@ -1,8 +1,7 @@
-package com.arkarzaw.simplehabit.Models;
+package com.arkarzaw.simplehabit.Data.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
 
 public class ItemModel implements Parcelable {
     int Image;

@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arkarzaw.simplehabit.Adapters.HorRcAdapter;
+import com.arkarzaw.simplehabit.Adapters.CateRcAdapter;
 import com.arkarzaw.simplehabit.Adapters.TopicRcAdapter;
-import com.arkarzaw.simplehabit.Models.ItemModel;
-import com.arkarzaw.simplehabit.Models.TopicModel;
+import com.arkarzaw.simplehabit.Data.Models.ItemModel;
+import com.arkarzaw.simplehabit.Data.Models.TopicModel;
 import com.arkarzaw.simplehabit.R;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class SeriesFragment extends Fragment {
         itemList.add(new ItemModel(R.drawable.healthy3,"Kindness of Self","5.19.20 mins"));
         itemList.add(new ItemModel(R.drawable.healthy4,"Kindness of Self","5.19.20 mins"));
         rcPopular.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
+        CateRcAdapter adapter = new CateRcAdapter(getContext());
         rcPopular.setAdapter(adapter);
         rcPopular.setNestedScrollingEnabled(false);
     }
@@ -69,7 +69,7 @@ public class SeriesFragment extends Fragment {
         tpList.add(new TopicModel(R.drawable.healthy1,"Basics","Learn meditation fundamentals"));
         tpList.add(new TopicModel(R.drawable.healthy2,"Relax","Unwind and relieve stress"));
         rcTopics.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        TopicRcAdapter adapter= new TopicRcAdapter(getContext(),R.layout.topic_view_holder,tpList);
+        TopicRcAdapter adapter= new TopicRcAdapter(getContext(),R.layout.view_holder_topic,tpList);
         rcTopics.setAdapter(adapter);
         rcTopics.setNestedScrollingEnabled(false);
     }
@@ -81,7 +81,7 @@ public class SeriesFragment extends Fragment {
         itemList.add(new ItemModel(R.drawable.healthy3,"Kindness of Self","5.19.20 mins"));
         itemList.add(new ItemModel(R.drawable.healthy4,"Kindness of Self","5.19.20 mins"));
         rcHealthyMind.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
+        CateRcAdapter adapter = new CateRcAdapter(getContext());
         rcHealthyMind.setAdapter(adapter);
         rcHealthyMind.setNestedScrollingEnabled(false);
     }
@@ -93,7 +93,7 @@ public class SeriesFragment extends Fragment {
         itemList.add(new ItemModel(R.drawable.healthy3,"Kindness of Self","5.19.20 mins"));
         itemList.add(new ItemModel(R.drawable.healthy4,"Kindness of Self","5.19.20 mins"));
         rcNewHabit.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
+        CateRcAdapter adapter = new CateRcAdapter(getContext());
         rcNewHabit.setAdapter(adapter);
         rcNewHabit.setNestedScrollingEnabled(false);
     }
@@ -105,7 +105,7 @@ public class SeriesFragment extends Fragment {
         itemList.add(new ItemModel(R.drawable.healthy3,"Kindness of Self","5.19.20 mins"));
         itemList.add(new ItemModel(R.drawable.healthy4,"Kindness of Self","5.19.20 mins"));
         rcPlayList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        HorRcAdapter adapter = new HorRcAdapter(getContext(),R.layout.hor_view_holder,itemList);
+        CateRcAdapter adapter = new CateRcAdapter(getContext());
         rcPlayList.setAdapter(adapter);
         rcPlayList.setNestedScrollingEnabled(false);
     }

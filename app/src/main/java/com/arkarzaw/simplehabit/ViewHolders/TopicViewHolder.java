@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.arkarzaw.simplehabit.R;
 
-public class TopicViewHolder extends RecyclerView.ViewHolder {
+public class TopicViewHolder extends BaseViewHolder {
 
     public ImageView imageView;
     public TextView title;
@@ -17,5 +17,10 @@ public class TopicViewHolder extends RecyclerView.ViewHolder {
         imageView=itemView.findViewById(R.id.imageView);
         title=itemView.findViewById(R.id.title);
         content=itemView.findViewById(R.id.content);
+    }
+
+    @Override
+    public void setData(Object data) {
+
     }
 }

@@ -48,7 +48,7 @@ public class MeditateFragment extends Fragment {
     private void setupViewPager(ViewPager vPager) {
         MyPagerAdapter viewPagerAdapter = new MyPagerAdapter(getChildFragmentManager());
         viewPagerAdapter.addFragment(new OnthegoFragment(), "ON THE GO");
-        viewPagerAdapter.addFragment(new SeriesFragment(), "SERIES");
+        viewPagerAdapter.addFragment(new NewSeriesFragment(), "SERIES");
         viewPagerAdapter.addFragment(new TeachersFragment(), "TEACHERS");
         vPager.setAdapter(viewPagerAdapter);
         vPager.setCurrentItem(1);
