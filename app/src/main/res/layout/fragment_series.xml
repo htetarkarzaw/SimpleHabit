@@ -155,11 +155,11 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"/>
 
-        <com.arkarzaw.simplehabit.MyLib.RecyclerViewStatic
+        <com.arkarzaw.simplehabit.myLibs.RecyclerViewStatic
             android:id="@+id/rcTopics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"></com.arkarzaw.simplehabit.MyLib.RecyclerViewStatic>
+            android:layout_marginBottom="10dp"></com.arkarzaw.simplehabit.myLibs.RecyclerViewStatic>
 
     </LinearLayout>
 

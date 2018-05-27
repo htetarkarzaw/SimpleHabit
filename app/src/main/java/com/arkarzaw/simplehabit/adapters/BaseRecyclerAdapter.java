@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Adapters;
+package com.arkarzaw.simplehabit.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arkarzaw.simplehabit.Adapters.CateRcAdapter;
-import com.arkarzaw.simplehabit.Adapters.TopicRcAdapter;
-import com.arkarzaw.simplehabit.Data.Models.ItemModel;
-import com.arkarzaw.simplehabit.Data.Models.TopicModel;
+import com.arkarzaw.simplehabit.adapters.CateRcAdapter;
+import com.arkarzaw.simplehabit.adapters.TopicRcAdapter;
+import com.arkarzaw.simplehabit.datas.Models.ItemModel;
+import com.arkarzaw.simplehabit.datas.Models.TopicModel;
 import com.arkarzaw.simplehabit.R;
 
 import java.util.ArrayList;

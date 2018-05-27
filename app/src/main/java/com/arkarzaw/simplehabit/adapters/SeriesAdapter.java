@@ -1,31 +1,28 @@
-package com.arkarzaw.simplehabit.Adapters;
+package com.arkarzaw.simplehabit.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arkarzaw.simplehabit.Data.VO.CategoryVO;
-import com.arkarzaw.simplehabit.Data.VO.CurrentVO;
-import com.arkarzaw.simplehabit.Data.VO.TopicVO;
+import com.arkarzaw.simplehabit.datas.VO.BaseVO;
+import com.arkarzaw.simplehabit.datas.VO.CategoryVO;
+import com.arkarzaw.simplehabit.datas.VO.CurrentVO;
+import com.arkarzaw.simplehabit.datas.VO.TopicVO;
 import com.arkarzaw.simplehabit.R;
 import com.arkarzaw.simplehabit.ViewHolders.BaseViewHolder;
-import com.arkarzaw.simplehabit.ViewHolders.CardViewHolder;
 import com.arkarzaw.simplehabit.ViewHolders.CateViewHolder;
 import com.arkarzaw.simplehabit.ViewHolders.CurrentViewHolder;
 import com.arkarzaw.simplehabit.ViewHolders.TopicViewHolder;
 
-public class SeriesAdapter extends BaseRecyclerAdapter<BaseViewHolder,Object> {
+public class SeriesAdapter extends BaseRecyclerAdapter<BaseViewHolder,BaseVO> {
 
     private  final int CURRENT_VIEW = 0;
     private final int CATE_VIEW = 1;
     private final int TOPIC_VIEW = 2;
 
-    private Context context;
-
     public SeriesAdapter(Context context) {
         super(context);
-        this.context = context;
     }
 
     @NonNull
@@ -46,40 +43,29 @@ public class SeriesAdapter extends BaseRecyclerAdapter<BaseViewHolder,Object> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
-//        holder.setData(mData.get(position));
+    public int getItemViewType(int position) {
+        if(mData.get(position) instanceof CurrentVO){
+            return CURRENT_VIEW;
+        }else if(mData.get(position) instanceof CategoryVO){
+            return CATE_VIEW;
+        }else if(mData.get(position) instanceof TopicVO){
+            return TOPIC_VIEW;
+        }
+        return 0;
+
     }
 
 //    @Override
 //    public int getItemViewType(int position) {
-//        if(mData.get(position) instanceof CurrentVO){
-//            return CURRENT_VIEW;
-//        }else if(mData.get(position) instanceof CategoryVO){
-//            return CATE_VIEW;
-//        }else if(mData.get(position) instanceof TopicVO){
-//            return TOPIC_VIEW;
-//        }
-//        return 0;
+//        if (position == 0) {
+//        return CURRENT_VIEW;
+//    } else if (position == 1) {
+//        return CATE_VIEW;
+//    } else if (position == 2) {
+//        return TOPIC_VIEW;
+//    }
+//    return CURRENT_VIEW;
+//
 //
 //    }
-
-
-    @Override
-    public int getItemCount() {
-        return 3;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        if (position == 0) {
-        return CURRENT_VIEW;
-    } else if (position == 1) {
-        return CATE_VIEW;
-    } else if (position == 2) {
-        return TOPIC_VIEW;
-    }
-    return CURRENT_VIEW;
-
-
-    }
 }

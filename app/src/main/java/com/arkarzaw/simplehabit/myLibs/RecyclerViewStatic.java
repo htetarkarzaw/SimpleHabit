@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.MyLib;
+package com.arkarzaw.simplehabit.myLibs;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

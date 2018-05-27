@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Data.VO;
+package com.arkarzaw.simplehabit.datas.VO;
 
 import com.google.gson.annotations.SerializedName;
 

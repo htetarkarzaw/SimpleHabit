@@ -1,13 +1,13 @@
 package com.arkarzaw.simplehabit.ViewHolders;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.arkarzaw.simplehabit.datas.VO.TopicVO;
 import com.arkarzaw.simplehabit.R;
 
-public class TopicViewHolder extends BaseViewHolder {
+public class TopicViewHolder extends BaseViewHolder<TopicVO> {
 
     public ImageView imageView;
     public TextView title;
@@ -20,7 +20,9 @@ public class TopicViewHolder extends BaseViewHolder {
     }
 
     @Override
-    public void setData(Object data) {
-
+    public void setData(TopicVO data) {
+        title.setText(data.getTopicName());
+        content.setText(data.getTopicDesc());
     }
+
 }
