@@ -30,6 +30,7 @@ public class CateViewHolder extends BaseViewHolder<CategoryVO> {
         rcViewCate.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         adapter = new CateRcAdapter(itemView.getContext());
         rcViewCate.setAdapter(adapter);
+        rcViewCate.setNestedScrollingEnabled(false);
         //rcView.setNestedScrollingEnabled(false);
     }
 
