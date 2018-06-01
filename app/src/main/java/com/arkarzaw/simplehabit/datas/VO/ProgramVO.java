@@ -16,6 +16,10 @@ public class ProgramVO implements BaseVO {
     @SerializedName("sessions")
     public List<SessionVO> sessions;
 
+    public ProgramVO(String programId) {
+        this.programId = programId;
+    }
+
     public String getProgramId() {
         return programId;
     }

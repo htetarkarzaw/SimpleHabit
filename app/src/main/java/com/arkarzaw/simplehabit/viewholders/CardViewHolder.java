@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.ViewHolders;
+package com.arkarzaw.simplehabit.viewholders;
 
 import android.view.View;
 import android.widget.ImageView;

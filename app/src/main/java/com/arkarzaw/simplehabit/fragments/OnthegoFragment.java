@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Fragments;
+package com.arkarzaw.simplehabit.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,15 +10,12 @@ import android.view.ViewGroup;
 
 import com.arkarzaw.simplehabit.R;
 
-public class MeFragment extends Fragment {
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+public class OnthegoFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_me, container, false);
+        View view = inflater.inflate(R.layout.fragment_onthego, container, false);
+        return view;
     }
 }

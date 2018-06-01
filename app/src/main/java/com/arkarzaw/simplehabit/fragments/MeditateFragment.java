@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Fragments;
+package com.arkarzaw.simplehabit.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

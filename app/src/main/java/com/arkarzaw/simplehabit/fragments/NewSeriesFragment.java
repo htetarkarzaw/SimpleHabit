@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Fragments;
+package com.arkarzaw.simplehabit.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arkarzaw.simplehabit.adapters.SeriesAdapter;
-import com.arkarzaw.simplehabit.datas.Models.SeriesModel;
+import com.arkarzaw.simplehabit.controllers.ItemClickListener;
 import com.arkarzaw.simplehabit.events.RestApiEvent;
 import com.arkarzaw.simplehabit.R;
 
@@ -29,11 +29,14 @@ public class NewSeriesFragment extends Fragment {
     RecyclerView rcView;
     SeriesAdapter adapter;
 
+    ItemClickListener clickListener;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         EventBus.getDefault().register(this);
+        clickListener= (ItemClickListener) getContext();
     }
 
     @Override
@@ -58,7 +61,7 @@ public class NewSeriesFragment extends Fragment {
 
     private void setUp() {
         rcView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        adapter = new SeriesAdapter(getContext());
+        adapter = new SeriesAdapter(getContext(),clickListener);
         rcView.setAdapter(adapter);
 
     }

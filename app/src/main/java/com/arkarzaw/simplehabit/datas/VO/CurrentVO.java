@@ -2,6 +2,7 @@ package com.arkarzaw.simplehabit.datas.VO;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CurrentVO implements BaseVO {
@@ -14,6 +15,17 @@ public class CurrentVO implements BaseVO {
     private String background;
     @SerializedName("average-lengths")
     private List<Integer> avgLengths;
+    private String description;
+    private  List<SessionVO> sessionVOList;
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public List<SessionVO> getSessionVOList() {
+        return sessionVOList;
+    }
 
     public String getProgramId() {
         return programId;

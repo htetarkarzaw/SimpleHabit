@@ -3,6 +3,7 @@ package com.arkarzaw.simplehabit.events;
 import com.arkarzaw.simplehabit.datas.VO.BaseVO;
 import com.arkarzaw.simplehabit.datas.VO.CategoryVO;
 import com.arkarzaw.simplehabit.datas.VO.CurrentVO;
+import com.arkarzaw.simplehabit.datas.VO.ProgramVO;
 import com.arkarzaw.simplehabit.datas.VO.TopicVO;
 
 import java.util.List;
@@ -30,6 +31,18 @@ public class RestApiEvent {
 
         public CurrentVO getCurrentVO() {
             return currentVO;
+        }
+    }
+
+    public static class ProgramLoadEvent{
+        ProgramVO programVO;
+
+        public ProgramLoadEvent(ProgramVO programVO) {
+            this.programVO = programVO;
+        }
+
+        public ProgramVO getProgramVO() {
+            return programVO;
         }
     }
 

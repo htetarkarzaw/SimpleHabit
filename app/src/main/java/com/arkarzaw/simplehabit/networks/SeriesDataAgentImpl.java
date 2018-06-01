@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.network;
+package com.arkarzaw.simplehabit.networks;
 
 import com.arkarzaw.simplehabit.datas.Response.CategoryDataResponse;
 import com.arkarzaw.simplehabit.datas.Response.CurrentDataResponse;
@@ -22,8 +22,6 @@ public class SeriesDataAgentImpl implements SeriesDataAgent {
     private static SeriesDataAgentImpl objInstance;
     private SimpleHabitAPI theApi;
 
-    public final String access_token="b002c7e1a528b7cb460933fc2875e916";
-    public final int page=1;
 
     private SeriesDataAgentImpl() {
         OkHttpClient okHttpClient=new OkHttpClient.Builder()
@@ -51,15 +49,18 @@ public class SeriesDataAgentImpl implements SeriesDataAgent {
 
 
     @Override
-    public void loadCurrentData() {
+    public void loadCurrentData(String access_token,int page) {
         Call<CurrentDataResponse> loadData=theApi.getCurrentItem(access_token,page);
         loadData.enqueue(new Callback<CurrentDataResponse>() {
             @Override
             public void onResponse(Call<CurrentDataResponse> call, Response<CurrentDataResponse> response) {
                 if(response.isSuccessful()){
                     CurrentDataResponse currentDataResponse =response.body();
-                    EventBus.getDefault().post(new RestApiEvent.CurrentDataLoadedEvent(currentDataResponse.getCurrentVO()));
-
+                    if(currentDataResponse!=null && currentDataResponse.getCurrentVO() != null) {
+                        EventBus.getDefault().post(new RestApiEvent.CurrentDataLoadedEvent(currentDataResponse.getCurrentVO()));
+                    }else {
+                        EventBus.getDefault().post(new RestApiEvent.ErrorInvokingAPIEvent("Current Program can't be loaded"));
+                    }
                 }else {
                     EventBus.getDefault().post(new RestApiEvent.ErrorInvokingAPIEvent("Can't connect right now. [102]"));
                 }
@@ -74,14 +75,18 @@ public class SeriesDataAgentImpl implements SeriesDataAgent {
     }
 
     @Override
-    public void loadCategory() {
+    public void loadCategory(String access_token,int page) {
         Call<CategoryDataResponse> loadData = theApi.getCategoryItem(access_token,page);
         loadData.enqueue(new Callback<CategoryDataResponse>() {
             @Override
             public void onResponse(Call<CategoryDataResponse> call, Response<CategoryDataResponse> response) {
                 if(response.isSuccessful()){
                     CategoryDataResponse categoryDataResponse = response.body();
-                    EventBus.getDefault().post(new RestApiEvent.CategoriesDataLoadedEvent(categoryDataResponse.getCategoriesPrograms()));
+                    if(categoryDataResponse!=null && categoryDataResponse.getCategoriesPrograms() != null) {
+                        EventBus.getDefault().post(new RestApiEvent.CategoriesDataLoadedEvent(categoryDataResponse.getCategoriesPrograms()));
+                    }else {
+                        EventBus.getDefault().post(new RestApiEvent.ErrorInvokingAPIEvent("Categories can't be loaded."));
+                    }
                 }else {
                     EventBus.getDefault().post(new RestApiEvent.ErrorInvokingAPIEvent("Can't connect right now. [102]"));
                 }
@@ -95,14 +100,18 @@ public class SeriesDataAgentImpl implements SeriesDataAgent {
     }
 
     @Override
-    public void loadTopic() {
+    public void loadTopic(String access_token,int page) {
             Call<TopicDataResponse> loadData = theApi.getTopicItem(access_token,page);
             loadData.enqueue(new Callback<TopicDataResponse>() {
                 @Override
                 public void onResponse(Call<TopicDataResponse> call, Response<TopicDataResponse> response) {
                     if(response.isSuccessful()){
                         TopicDataResponse topicDataResponse = response.body();
-                        EventBus.getDefault().post(new RestApiEvent.TopicsDataLoadedEvent(topicDataResponse.getTopics()));
+                        if(topicDataResponse != null && topicDataResponse.getTopics() != null) {
+                            EventBus.getDefault().post(new RestApiEvent.TopicsDataLoadedEvent(topicDataResponse.getTopics()));
+                        }else {
+                            EventBus.getDefault().post(new RestApiEvent.ErrorInvokingAPIEvent("Topics can't be loaded."));
+                        }
                     }else {
                         EventBus.getDefault().post(new RestApiEvent.ErrorInvokingAPIEvent("Can't connect right now. [102]"));
                     }

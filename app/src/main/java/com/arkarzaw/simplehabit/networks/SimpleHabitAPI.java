@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.network;
+package com.arkarzaw.simplehabit.networks;
 
 import com.arkarzaw.simplehabit.datas.Response.CategoryDataResponse;
 import com.arkarzaw.simplehabit.datas.Response.CurrentDataResponse;

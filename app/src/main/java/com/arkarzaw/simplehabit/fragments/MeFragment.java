@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Fragments;
+package com.arkarzaw.simplehabit.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,16 +9,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arkarzaw.simplehabit.R;
+import com.arkarzaw.simplehabit.companents.ProgressView;
 
-public class MoreFragment extends Fragment {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MeFragment extends Fragment {
+
+    @BindView(R.id.progressView)
+    ProgressView progressView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_more, container, false);
+        View v=inflater.inflate(R.layout.fragment_me, container, false);
+        ButterKnife.bind(this,v);
+        progressView.setCurrentDay(0);
+        progressView.setTotalSession(5);
+        progressView.setTotalMinutes(15);
+        return v;
     }
 }

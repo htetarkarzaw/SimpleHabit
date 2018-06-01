@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.ViewHolders;
+package com.arkarzaw.simplehabit.viewholders;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,7 +26,6 @@ public class CateViewHolder extends BaseViewHolder<CategoryVO> {
         super(itemView);
         ButterKnife.bind(this, itemView);
 
-        header.setText("CateMode xyz");
         rcViewCate.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         adapter = new CateRcAdapter(itemView.getContext());
         rcViewCate.setAdapter(adapter);

@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.arkarzaw.simplehabit.datas.VO.ProgramVO;
 import com.arkarzaw.simplehabit.R;
-import com.arkarzaw.simplehabit.ViewHolders.CardViewHolder;
+import com.arkarzaw.simplehabit.viewholders.CardViewHolder;
 
 public class CateRcAdapter extends BaseRecyclerAdapter<CardViewHolder, ProgramVO> {
 
@@ -16,7 +16,7 @@ public class CateRcAdapter extends BaseRecyclerAdapter<CardViewHolder, ProgramVO
 
     @Override
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mLayoutInflator.inflate(R.layout.view_holder_card, parent, false);
+        View view = mLayoutInflator.inflate(R.layout.view_holder_category_item, parent, false);
         return new CardViewHolder(view);
     }
 

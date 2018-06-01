@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arkarzaw.simplehabit.datas.Models.TopicModel;
-import com.arkarzaw.simplehabit.ViewHolders.TopicViewHolder;
+import com.arkarzaw.simplehabit.viewholders.TopicViewHolder;
 
 import java.util.ArrayList;
 

@@ -9,4 +9,11 @@
     <color name="green">#00af6f</color>
     <color name="greenLight">#02ecf0</color>
     <color name="grayLight">#33ffffff</color>
+    <color name="pink">#33dd0e72</color>
+    <color name="cyan">#EA80FC</color>
+    <color name="greenText">#00796B</color>
+    <color name="blueLight">#0288D1</color>
+
+
+
 </resources>

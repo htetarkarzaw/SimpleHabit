@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.Fragments;
+package com.arkarzaw.simplehabit.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,12 +10,15 @@ import android.view.ViewGroup;
 
 import com.arkarzaw.simplehabit.R;
 
-public class TeachersFragment extends Fragment {
+public class MoreFragment extends Fragment {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_teachers, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_more, container, false);
     }
 }

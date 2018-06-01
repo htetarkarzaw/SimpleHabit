@@ -1,17 +1,21 @@
-package com.arkarzaw.simplehabit;
+package com.arkarzaw.simplehabit.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.arkarzaw.simplehabit.Fragments.MeFragment;
-import com.arkarzaw.simplehabit.Fragments.MeditateFragment;
-import com.arkarzaw.simplehabit.Fragments.MoreFragment;
+import com.arkarzaw.simplehabit.R;
+import com.arkarzaw.simplehabit.controllers.ItemClickListener;
+import com.arkarzaw.simplehabit.datas.VO.BaseVO;
+import com.arkarzaw.simplehabit.fragments.MeFragment;
+import com.arkarzaw.simplehabit.fragments.MeditateFragment;
+import com.arkarzaw.simplehabit.fragments.MoreFragment;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseAcitvity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     CoordinatorLayout frag_holder;
 
@@ -58,5 +62,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         }
         return loadFragment(fragment);
+    }
+
+    @Override
+    public void onCurrentItemClick(String datas) {
+        Intent showItem = new Intent(this,ShowItemActivity.class);
+        showItem.putExtra("itemData", datas);
+        showItem.putExtra("TYPE","current");
+        startActivity(showItem);
+    }
+
+    @Override
+    public void onCategoryItemClick() {
+
     }
 }

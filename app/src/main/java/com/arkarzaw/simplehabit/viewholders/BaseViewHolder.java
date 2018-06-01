@@ -1,4 +1,4 @@
-package com.arkarzaw.simplehabit.ViewHolders;
+package com.arkarzaw.simplehabit.viewholders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

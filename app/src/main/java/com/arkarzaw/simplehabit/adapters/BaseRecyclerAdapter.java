@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
 
-import com.arkarzaw.simplehabit.ViewHolders.BaseViewHolder;
+import com.arkarzaw.simplehabit.viewholders.BaseViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
