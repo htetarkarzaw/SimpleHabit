@@ -2,83 +2,78 @@ package com.arkarzaw.simplehabit.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.arkarzaw.simplehabit.R;
-import com.arkarzaw.simplehabit.adapters.ShowItemDetailAdapter;
+import com.arkarzaw.simplehabit.adapters.SessionAdapter;
+import com.arkarzaw.simplehabit.companents.ItemDetailView;
 import com.arkarzaw.simplehabit.datas.Models.SeriesModel;
-import com.arkarzaw.simplehabit.datas.VO.BaseVO;
-import com.arkarzaw.simplehabit.datas.VO.CategoryVO;
 import com.arkarzaw.simplehabit.datas.VO.CurrentVO;
 import com.arkarzaw.simplehabit.datas.VO.ProgramVO;
-import com.arkarzaw.simplehabit.events.RestApiEvent;
-import com.arkarzaw.simplehabit.viewholders.CurrentViewHolder;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ShowItemActivity extends BaseAcitvity {
 
-    @BindView(R.id.rcItemDetails)
-    RecyclerView recyclerView;
 
     @BindView(R.id.tvTitle)
     TextView tvTitle;
 
+    @BindView(R.id.itemDetailView)
+    ItemDetailView itemDetailView;
+
     private CurrentVO currentVO;
     private ProgramVO programVO;
-    String itemId,type;
+    String categoryId,programId,type;
 
-    ShowItemDetailAdapter adapter;
+    SessionAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivty_show_item_details);
         ButterKnife.bind(this,this);
-        if(getIntent().hasExtra("itemData")){
-            itemId=getIntent().getStringExtra("itemData");
+        if(getIntent().hasExtra("CATEGORY_ID")){
+            categoryId =getIntent().getStringExtra("CATEGORY_ID");
+        }
+        if(getIntent().hasExtra("PRO_ID")){
+            programId =getIntent().getStringExtra("PRO_ID");
         }
         if(getIntent().hasExtra("TYPE")){
             type = getIntent().getStringExtra("TYPE");
         }
         if(type.equals("current")){
-            SeriesModel.getInstance().loadCurrentData();
+            CurrentVO current = SeriesModel.getInstance().getCurrentData();
+            bindData(current);
         }else {
-            SeriesModel.getInstance().loadProgramData(itemId);
+            ProgramVO programVO = SeriesModel.getInstance().getProgramVO(categoryId,programId);
+            bindData(programVO);
         }
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        adapter = new ShowItemDetailAdapter(getApplicationContext());
-        recyclerView.setAdapter(adapter);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onProgramLoadedEvent(RestApiEvent.ProgramLoadEvent event) {
-        programVO = event.getProgramVO();
-        adapter.setData(programVO);
+    private void bindData(ProgramVO programVO) {
+        itemDetailView.setupDescription(programVO.getDescription());
+        itemDetailView.setupSession(programVO.getSessions());
+        tvTitle.setText(programVO.getTitle());
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onCurrentProgramLoadedEvent(RestApiEvent.CurrentDataLoadedEvent event) {
-        currentVO = event.getCurrentVO();
-        adapter.setData(currentVO);
+    private void bindData(CurrentVO current) {
+        itemDetailView.setupDescription(current.getDescription());
+        itemDetailView.setupSession(current.getSession());
+        tvTitle.setText(current.getTitle());
     }
+
     @Override
     protected void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 
 }

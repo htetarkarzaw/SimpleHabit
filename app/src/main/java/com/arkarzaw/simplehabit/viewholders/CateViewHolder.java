@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.arkarzaw.simplehabit.adapters.CateRcAdapter;
+import com.arkarzaw.simplehabit.controllers.ItemClickListener;
 import com.arkarzaw.simplehabit.datas.VO.CategoryVO;
 import com.arkarzaw.simplehabit.R;
 
@@ -22,12 +23,15 @@ public class CateViewHolder extends BaseViewHolder<CategoryVO> {
 
     CateRcAdapter adapter;
 
-    public CateViewHolder(View itemView) {
+    ItemClickListener clickListener;
+
+    public CateViewHolder(View itemView,ItemClickListener clickListener) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+        this.clickListener = clickListener;
 
         rcViewCate.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        adapter = new CateRcAdapter(itemView.getContext());
+        adapter = new CateRcAdapter(itemView.getContext(),clickListener);
         rcViewCate.setAdapter(adapter);
         rcViewCate.setNestedScrollingEnabled(false);
         //rcView.setNestedScrollingEnabled(false);
@@ -37,6 +41,7 @@ public class CateViewHolder extends BaseViewHolder<CategoryVO> {
     public void setData(CategoryVO data) {
         header.setText(data.getTitle());
         adapter.setNewData(data.getPrograms());
+        adapter.setRootCategory(data);
     }
 
 }

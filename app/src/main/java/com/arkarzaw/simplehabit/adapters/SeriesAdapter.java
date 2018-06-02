@@ -39,7 +39,7 @@ public class SeriesAdapter extends BaseRecyclerAdapter<BaseViewHolder,BaseVO> {
             bHolder= new CurrentViewHolder(v,clickListener);
         }else if(viewType==CATE_VIEW){
             View v=mLayoutInflator.inflate(R.layout.view_holder_category,parent,false);
-            bHolder= new CateViewHolder(v);
+            bHolder= new CateViewHolder(v,clickListener);
         }else if(viewType==TOPIC_VIEW){
             View v=mLayoutInflator.inflate(R.layout.view_holder_topic,parent,false);
             bHolder= new TopicViewHolder(v);

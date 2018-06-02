@@ -41,6 +41,6 @@ public class CurrentViewHolder extends BaseViewHolder<CurrentVO> {
 
     @Override
     public void onClick(View view) {
-        clickListener.onCurrentItemClick(currentVO.getProgramId());
+        clickListener.onCurrentItemClick();
     }
 }

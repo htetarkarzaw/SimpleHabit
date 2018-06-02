@@ -14,15 +14,14 @@ public class BaseAcitvity extends AppCompatActivity implements ItemClickListener
 
 
 
+
     @Override
-    public void onCurrentItemClick(String datas) {
+    public void onCurrentItemClick() {
 
     }
 
     @Override
-    public void onCategoryItemClick() {
+    public void onCategoryItemClick(String categoryId, String programId) {
 
     }
-
-
 }

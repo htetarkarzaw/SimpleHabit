@@ -1,5 +1,8 @@
 package com.arkarzaw.simplehabit.datas.Models;
 
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+
 import com.arkarzaw.simplehabit.Constants;
 import com.arkarzaw.simplehabit.datas.VO.BaseVO;
 import com.arkarzaw.simplehabit.datas.VO.CategoryVO;
@@ -34,51 +37,60 @@ public class SeriesModel {
         this.currentModel = currentModel;
     }
 
-    public static SeriesModel getInstance(){
-        if(objInstance == null) {
+    public static SeriesModel getInstance() {
+        if (objInstance == null) {
             objInstance = new SeriesModel();
         }
         return objInstance;
     }
 
-    public void loadCurrentData(){
-        EventBus.getDefault().post(new RestApiEvent.CurrentDataLoadedEvent(currentVO));
-    }
 
-    public void loadProgramData(String programID){
-        ProgramVO programVO = new ProgramVO(programID);
-        for(CategoryVO vo:categoryList){
-            for(ProgramVO voprogram:vo.getPrograms()){
-                if(voprogram.getProgramId().equalsIgnoreCase(programID)){
-                    programVO =voprogram;
-                }
-            }
-        }
-        EventBus.getDefault().post(new RestApiEvent.ProgramLoadEvent(programVO));
-    }
-
-    public void startLoadingSimpleHabit(){
-        SeriesDataAgentImpl.getInstance().loadCurrentData(Constants.ACCESS_TOKEN,Constants.PAGE);
+    public void startLoadingSimpleHabit() {
+        SeriesDataAgentImpl.getInstance().loadCurrentData(Constants.ACCESS_TOKEN, Constants.PAGE);
     }
 
     @Subscribe
-    public void loadedCurrentData(RestApiEvent.CurrentDataLoadedEvent event){
+    public void loadedCurrentData(RestApiEvent.CurrentDataLoadedEvent event) {
         dataList.add(event.getCurrentVO());
-        SeriesDataAgentImpl.getInstance().loadCategory(Constants.ACCESS_TOKEN,Constants.PAGE);
+        SeriesDataAgentImpl.getInstance().loadCategory(Constants.ACCESS_TOKEN, Constants.PAGE);
     }
 
     @Subscribe
-    public void loadedCategoryData(RestApiEvent.CategoriesDataLoadedEvent event){
+    public void loadedCategoryData(RestApiEvent.CategoriesDataLoadedEvent event) {
         dataList.addAll(event.getLoadCategories());
-        SeriesDataAgentImpl.getInstance().loadTopic(Constants.ACCESS_TOKEN,Constants.PAGE);
+        SeriesDataAgentImpl.getInstance().loadTopic(Constants.ACCESS_TOKEN, Constants.PAGE);
     }
 
     @Subscribe
-    public void loadedTopicData(RestApiEvent.TopicsDataLoadedEvent event){
+    public void loadedTopicData(RestApiEvent.TopicsDataLoadedEvent event) {
         dataList.addAll(event.getLoadTopics());
 
         RestApiEvent.DataReadyEvent dataReadyEvent = new RestApiEvent.DataReadyEvent(dataList);
         EventBus.getDefault().post(dataReadyEvent);
     }
 
+    public @Nullable
+    CurrentVO getCurrentData() {
+        for (BaseVO data : dataList) {
+            if (data instanceof CurrentVO)
+                return (CurrentVO) data;
+        }
+        return null;
+    }
+
+    public @Nullable ProgramVO getProgramVO(String cateId, String programId) {
+        for (BaseVO data : dataList) {
+            if (data instanceof CategoryVO) {
+                CategoryVO cateVO = (CategoryVO) data;
+                if(TextUtils.equals(cateId,cateVO.getCategoryId())){
+                    for(ProgramVO program:cateVO.getPrograms()){
+                        if(TextUtils.equals(program.getProgramId(),programId)){
+                            return program;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

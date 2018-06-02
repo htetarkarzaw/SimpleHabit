@@ -65,15 +65,18 @@ public class MainActivity extends BaseAcitvity implements BottomNavigationView.O
     }
 
     @Override
-    public void onCurrentItemClick(String datas) {
+    public void onCurrentItemClick() {
         Intent showItem = new Intent(this,ShowItemActivity.class);
-        showItem.putExtra("itemData", datas);
         showItem.putExtra("TYPE","current");
         startActivity(showItem);
     }
 
     @Override
-    public void onCategoryItemClick() {
-
+    public void onCategoryItemClick(String cateId,String proId) {
+        Intent showItem = new Intent(this,ShowItemActivity.class);
+        showItem.putExtra("CATEGORY_ID", cateId);
+        showItem.putExtra("PRO_ID",proId);
+        showItem.putExtra("TYPE","category");
+        startActivity(showItem);
     }
 }

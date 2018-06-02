@@ -16,15 +16,15 @@ public class CurrentVO implements BaseVO {
     @SerializedName("average-lengths")
     private List<Integer> avgLengths;
     private String description;
-    private  List<SessionVO> sessionVOList;
+    private  List<SessionVO> sessions;
 
 
     public String getDescription() {
         return description;
     }
 
-    public List<SessionVO> getSessionVOList() {
-        return sessionVOList;
+    public List<SessionVO> getSession() {
+        return sessions;
     }
 
     public String getProgramId() {

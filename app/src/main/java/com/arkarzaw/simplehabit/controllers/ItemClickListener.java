@@ -4,7 +4,7 @@ import com.arkarzaw.simplehabit.datas.VO.BaseVO;
 
 public interface ItemClickListener {
 
-    public void onCurrentItemClick(String datas);
-    public void onCategoryItemClick();
+    public void onCurrentItemClick();
+    public void onCategoryItemClick(String categoryId,String programId);
 
 }

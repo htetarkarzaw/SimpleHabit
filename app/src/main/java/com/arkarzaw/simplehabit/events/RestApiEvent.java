@@ -34,17 +34,7 @@ public class RestApiEvent {
         }
     }
 
-    public static class ProgramLoadEvent{
-        ProgramVO programVO;
 
-        public ProgramLoadEvent(ProgramVO programVO) {
-            this.programVO = programVO;
-        }
-
-        public ProgramVO getProgramVO() {
-            return programVO;
-        }
-    }
 
     public static class CategoriesDataLoadedEvent {
         private List<CategoryVO> loadCategories;
