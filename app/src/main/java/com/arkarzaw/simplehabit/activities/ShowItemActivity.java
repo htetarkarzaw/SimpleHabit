@@ -1,7 +1,10 @@
 package com.arkarzaw.simplehabit.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.widget.TextView;
 
 import com.arkarzaw.simplehabit.R;
@@ -28,6 +31,20 @@ public class ShowItemActivity extends BaseAcitvity {
     String categoryId,programId,type;
 
     SessionAdapter adapter;
+
+    public static void getInstanceCurrent(Context context){
+        Intent intent = new Intent(context,ShowItemActivity.class);
+        intent.putExtra("TYPE","current");
+        context.startActivity(intent);
+    }
+
+    public static void getInstanceCategory(Context context,String categoryId,String programId){
+        Intent showItem = new Intent(context,ShowItemActivity.class);
+        showItem.putExtra("CATEGORY_ID", categoryId);
+        showItem.putExtra("PRO_ID",programId);
+        showItem.putExtra("TYPE","category");
+        context.startActivity(showItem);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

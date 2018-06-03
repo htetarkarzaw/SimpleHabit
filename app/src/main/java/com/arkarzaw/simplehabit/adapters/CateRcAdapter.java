@@ -31,7 +31,7 @@ public class CateRcAdapter extends BaseRecyclerAdapter<CardViewHolder, ProgramVO
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        holder.setRootCategory(categoryVO);
+        holder.setCategory(categoryVO);
 
     }
 

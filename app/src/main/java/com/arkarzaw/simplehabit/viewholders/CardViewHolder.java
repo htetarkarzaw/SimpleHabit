@@ -39,7 +39,7 @@ public class CardViewHolder extends BaseViewHolder<ProgramVO> {
         programVO = data;
     }
 
-    public void setRootCategory(CategoryVO category){
+    public void setCategory(CategoryVO category){
         categoryVO = category;
     }
 
