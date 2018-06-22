@@ -64,21 +64,21 @@ public class MainActivity extends BaseAcitvity implements BottomNavigationView.O
         return loadFragment(fragment);
     }
 
-    @Override
-    public void onCurrentItemClick()
-    {
-        ShowItemActivity.getInstanceCurrent(this);
-//        Intent showItem = new Intent(this,ShowItemActivity.class);
-//        showItem.putExtra("TYPE","current");
-//        startActivity(showItem);
-    }
-    @Override
-    public void onCategoryItemClick(String cateId,String proId) {
-//        Intent showItem = new Intent(this,ShowItemActivity.class);
-//        showItem.putExtra("CATEGORY_ID", cateId);
-//        showItem.putExtra("PRO_ID",proId);
-//        showItem.putExtra("TYPE","category");
-//        startActivity(showItem);
-        ShowItemActivity.getInstanceCategory(this,cateId,proId);
-    }
+//    @Override
+//    public void onCurrentItemClick()
+//    {
+//        ShowItemActivity.getInstanceCurrent(this);
+////        Intent showItem = new Intent(this,ShowItemActivity.class);
+////        showItem.putExtra("TYPE","current");
+////        startActivity(showItem);
+//    }
+//    @Override
+//    public void onCategoryItemClick(String cateId,String proId) {
+////        Intent showItem = new Intent(this,ShowItemActivity.class);
+////        showItem.putExtra("CATEGORY_ID", cateId);
+////        showItem.putExtra("PRO_ID",proId);
+////        showItem.putExtra("TYPE","category");
+////        startActivity(showItem);
+//        ShowItemActivity.getInstanceCategory(this,cateId,proId);
+//    }
 }

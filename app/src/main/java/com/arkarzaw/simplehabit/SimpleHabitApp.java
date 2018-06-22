@@ -9,7 +9,5 @@ public class SimpleHabitApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        SeriesModel.getInstance().startLoadingSimpleHabit();
     }
 }

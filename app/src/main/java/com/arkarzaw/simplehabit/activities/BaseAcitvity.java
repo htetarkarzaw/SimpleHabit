@@ -10,18 +10,15 @@ import com.arkarzaw.simplehabit.datas.VO.BaseVO;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class BaseAcitvity extends AppCompatActivity implements ItemClickListener{
+public class BaseAcitvity extends AppCompatActivity{
 
-
-
-
-    @Override
-    public void onCurrentItemClick() {
-
-    }
-
-    @Override
-    public void onCategoryItemClick(String categoryId, String programId) {
-
-    }
+//    @Override
+//    public void onCurrentItemClick() {
+//
+//    }
+//
+//    @Override
+//    public void onCategoryItemClick(String categoryId, String programId) {
+//
+//    }
 }

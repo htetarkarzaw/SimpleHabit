@@ -13,11 +13,13 @@ import com.arkarzaw.simplehabit.companents.ItemDetailView;
 import com.arkarzaw.simplehabit.datas.Models.SeriesModel;
 import com.arkarzaw.simplehabit.datas.VO.CurrentVO;
 import com.arkarzaw.simplehabit.datas.VO.ProgramVO;
+import com.arkarzaw.simplehabit.mvp.presenters.ShowItemPresenter;
+import com.arkarzaw.simplehabit.mvp.views.ShowItemView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ShowItemActivity extends BaseAcitvity {
+public class ShowItemActivity extends BaseAcitvity implements ShowItemView{
 
 
     @BindView(R.id.tvTitle)
@@ -31,6 +33,7 @@ public class ShowItemActivity extends BaseAcitvity {
     String categoryId,programId,type;
 
     SessionAdapter adapter;
+    ShowItemPresenter mPresenter;
 
     public static void getInstanceCurrent(Context context){
         Intent intent = new Intent(context,ShowItemActivity.class);
@@ -60,37 +63,59 @@ public class ShowItemActivity extends BaseAcitvity {
         if(getIntent().hasExtra("TYPE")){
             type = getIntent().getStringExtra("TYPE");
         }
-        if(type.equals("current")){
-            CurrentVO current = SeriesModel.getInstance().getCurrentData();
-            bindData(current);
-        }else {
-            ProgramVO programVO = SeriesModel.getInstance().getProgramVO(categoryId,programId);
-            bindData(programVO);
-        }
+        mPresenter = new ShowItemPresenter(this);
+        mPresenter.onFinishUISetUp(categoryId,programId,type);
+
     }
 
-    private void bindData(ProgramVO programVO) {
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenter.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mPresenter.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestory();
+    }
+
+    @Override
+    public void displayCurrentProgramDetail(CurrentVO currentVO) {
+        itemDetailView.setupDescription(currentVO.getDescription());
+        itemDetailView.setupSession(currentVO.getSession());
+        tvTitle.setText(currentVO.getTitle());
+    }
+
+    @Override
+    public void displayCategoryProgramDetail(ProgramVO programVO) {
         itemDetailView.setupDescription(programVO.getDescription());
         itemDetailView.setupSession(programVO.getSessions());
         tvTitle.setText(programVO.getTitle());
     }
 
-    private void bindData(CurrentVO current) {
-        itemDetailView.setupDescription(current.getDescription());
-        itemDetailView.setupSession(current.getSession());
-        tvTitle.setText(current.getTitle());
-    }
-
     @Override
-    protected void onStart() {
-        super.onStart();
-//        EventBus.getDefault().register(this);
-    }
+    public void displayErrorMsg(String errMessage) {
 
-    @Override
-    public void onStop() {
-        super.onStop();
-//        EventBus.getDefault().unregister(this);
     }
-
 }
