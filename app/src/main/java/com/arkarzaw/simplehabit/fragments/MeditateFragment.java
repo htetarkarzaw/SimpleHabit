@@ -20,6 +20,7 @@ import java.util.List;
 public class MeditateFragment extends Fragment {
     ViewPager vPager;
     TabLayout tLayout;
+    NewSeriesFragment seriesFragment = new NewSeriesFragment();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +53,10 @@ public class MeditateFragment extends Fragment {
         viewPagerAdapter.addFragment(new TeachersFragment(), "TEACHERS");
         vPager.setAdapter(viewPagerAdapter);
         vPager.setCurrentItem(1);
+        seriesFragment = (NewSeriesFragment) viewPagerAdapter.getItem(1);
     }
 
-    private class MyPagerAdapter extends FragmentPagerAdapter {
+    public class MyPagerAdapter extends FragmentPagerAdapter {
 
         List<Fragment> fragmentList = new ArrayList<>();
         List<String> fragmentTitles = new ArrayList<>();
@@ -82,5 +84,9 @@ public class MeditateFragment extends Fragment {
             fragmentList.add(fragment);
             fragmentTitles.add(name);
         }
+    }
+
+    public NewSeriesFragment getSeriesFragment(){
+        return seriesFragment;
     }
 }

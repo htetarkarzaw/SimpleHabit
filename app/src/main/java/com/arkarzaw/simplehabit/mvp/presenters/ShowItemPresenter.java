@@ -7,11 +7,13 @@ import com.arkarzaw.simplehabit.mvp.views.ShowItemView;
 
 public class ShowItemPresenter extends BasePresenter<ShowItemView> {
 
-    public ShowItemPresenter(ShowItemView mView) {
-        super(mView);
+
+    @Override
+    public void initPresenter(ShowItemView view) {
+        super.initPresenter(view);
     }
 
-    public void onFinishUISetUp(String categoryId,String programId,String type){
+    public void onFinishUISetUp(String categoryId, String programId, String type){
         if(type.equals("current")){
             CurrentVO current = SeriesModel.getInstance().getCurrentData();
             mView.displayCurrentProgramDetail(current);

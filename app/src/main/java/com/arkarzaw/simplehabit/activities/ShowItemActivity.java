@@ -1,5 +1,6 @@
 package com.arkarzaw.simplehabit.activities;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -63,42 +64,12 @@ public class ShowItemActivity extends BaseAcitvity implements ShowItemView{
         if(getIntent().hasExtra("TYPE")){
             type = getIntent().getStringExtra("TYPE");
         }
-        mPresenter = new ShowItemPresenter(this);
+        mPresenter = ViewModelProviders.of(this).get(ShowItemPresenter.class);
+        mPresenter.initPresenter(this);
         mPresenter.onFinishUISetUp(categoryId,programId,type);
 
     }
 
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mPresenter.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mPresenter.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mPresenter.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mPresenter.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mPresenter.onDestory();
-    }
 
     @Override
     public void displayCurrentProgramDetail(CurrentVO currentVO) {
